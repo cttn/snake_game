@@ -62,23 +62,21 @@ class SnakeGame(QWidget):
         painter.drawRect(self.food[0], self.food[1], 10, 10)
 
     def generate_food(self):
-        # Generar una nueva posición aleatoria para la comida
-        # Aquí puedes personalizar el rango de posición de la comida
-        # Generar una nueva posición aleatoria para la comida
+        # Generate a random position for the food
         x = random.randint(0, self.width() - 10)
         y = random.randint(0, self.height() - 10)
         return x // 10 * 10, y // 10 * 10
 
-    # Verificar si la serpiente ha chocado contra una pared o contra su propio cuerpo
+    # Check snake collision against walls or itself
     def check_collision(self):
         head = self.snake[0]
         x, y = head
 
-        # Verificar si la serpiente ha chocado contra una pared
+        # Wall collision
         if x < 0 or x >= self.width() or y < 0 or y >= self.height():
             return True
 
-        # Verificar si la serpiente ha chocado contra su propio cuerpo
+        # self collision
         if head in self.snake[1:]:
             return True
 
